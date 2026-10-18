@@ -193,144 +193,68 @@ Descriptive statistical measures were calculated across numerical metrics to eva
 
 ---
 
-## How to Run the Project
+Project Structure
 
-Follow these step-by-step instructions and code snippets to run the complete analysis notebook in Google Colab or Jupyter Notebook:
+Superstore-Sales-Data-Analysis/
+│
+├── Main_Project_Superstore_Sales_Analysis.ipynb
+├── dataset/
+│   ├── Sample - Superstore.csv
+│   └── cleaned_superstore.csv
+├── README.md
+└── visualizations/
+    ├── correlation_heatmap.png
+    ├── category_sales.png
+    ├── yearly_sales_trend.png
+    ├── top10_subcategories.png
+    ├── category_profit.png
+    ├── regional_sales.png
+    └── regional_profit.png
 
-### 1. Clone the Repository
-```bash
-git clone [https://github.com/your-username/Superstore-Sales-Data-Analysis.git](https://github.com/your-username/Superstore-Sales-Data-Analysis.git)
-cd Superstore-Sales-Data-Analysis
 
-### 2. Install Required Libraries
+How to Run the Project
+
+Clone the Repository:
+
+git clone https://github.com/your-username/Superstore-Sales-Data-Analysis.git
+
+
+Open the Notebook:
+Launch Google Colab or Jupyter Notebook and open:
+
+Main_Project_Superstore_Sales_Analysis.ipynb
+
+
+Install Required Libraries:
+Ensure the necessary Python dependencies are installed:
+
 pip install pandas numpy matplotlib seaborn
 
-### 3. Complete Python Analysis Script
-Run the following code block in your environment to execute the complete pipeline:
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+Execute the Cells:
+Run the notebook cells sequentially to reproduce data cleaning, feature engineering, statistical computations, visual plots, and business reports.
 
-# Set visualization style
-sns.set_theme(style="whitegrid")
-plt.rcParams['figure.figsize'] = (10, 6)
+Analysis Techniques Used
 
-# ---------------------------------------------------------
-# Step 1: Data Collection & Pre-processing
-# ---------------------------------------------------------
-# Load raw dataset from raw GitHub repository link
-url = '[https://raw.githubusercontent.com/datasets/superstore/main/superstore.csv](https://raw.githubusercontent.com/datasets/superstore/main/superstore.csv)'
-df = pd.read_csv(url, encoding='latin1')
+Data Inspection & Data Cleaning
 
-# Data cleaning & type conversion
-df['Order Date'] = pd.to_datetime(df['Order Date'])
-df['Ship Date'] = pd.to_datetime(df['Ship Date'])
+Missing Value Imputation & Lookup
 
-# Handle missing postal codes if any
-df['Postal Code'] = df['Postal Code'].fillna(0).astype(int)
+Feature Engineering (order_year, shipping_days, profit_margin)
 
-# ---------------------------------------------------------
-# Step 2: Feature Engineering
-# ---------------------------------------------------------
-df['order_year'] = df['Order Date'].dt.year
-df['shipping_days'] = (df['Ship Date'] - df['Order Date']).dt.days
-df['profit_margin'] = df['Profit'] / df['Sales']
+Descriptive Statistical Analysis (Central Tendency, Variance, Std Dev, Skewness, Kurtosis)
 
-# Export cleaned dataset
-df.to_csv('cleaned_superstore.csv', index=False)
-print("Cleaned dataset saved as 'cleaned_superstore.csv'")
+Univariate Analysis
 
-# ---------------------------------------------------------
-# Step 3: Statistical Moments Calculation
-# ---------------------------------------------------------
-num_cols = ['Sales', 'Profit', 'Quantity', 'Discount', 'profit_margin']
-stats_df = pd.DataFrame({
-    'Mean': df[num_cols].mean(),
-    'Median': df[num_cols].median(),
-    'Std Dev': df[num_cols].std(),
-    'Variance': df[num_cols].var(),
-    'Skewness': df[num_cols].skew(),
-    'Kurtosis': df[num_cols].kurt()
-})
-print("\n--- STATISTICAL ANALYSIS SUMMARY ---")
-print(stats_df)
+Bivariate Analysis
 
-# ---------------------------------------------------------
-# Step 4: Exploratory Data Analysis & Visualizations
-# ---------------------------------------------------------
+Multivariate Analysis
 
-# 1. Correlation Matrix Heatmap
-plt.figure(figsize=(8, 6))
-sns.heatmap(df[['Sales', 'Quantity', 'Discount', 'Profit', 'profit_margin']].corr(), 
-            annot=True, cmap='coolwarm', fmt='.3f', linewidths=0.5)
-plt.title('Correlation Matrix of Superstore Numerical Features', fontsize=14, fontweight='bold')
-plt.tight_layout()
-plt.savefig('visualizations/correlation_heatmap.png')
-plt.show()
+Temporal Growth & Trend Analysis
 
-# 2. Total Sales by Product Category
-category_sales = df.groupby('Category')['Sales'].sum().reset_index().sort_values(by='Sales', ascending=False)
-plt.figure(figsize=(8, 5))
-sns.barplot(data=category_sales, x='Category', y='Sales', palette='viridis')
-plt.title('Total Sales by Product Category', fontsize=14, fontweight='bold')
-plt.ylabel('Total Sales ($)')
-plt.tight_layout()
-plt.savefig('visualizations/category_sales.png')
-plt.show()
+Correlation & Scatter Relationship Analysis
 
-# 3. Yearly Sales Trend (2015-2018)
-yearly_sales = df.groupby('order_year')['Sales'].sum().reset_index()
-plt.figure(figsize=(8, 5))
-sns.lineplot(data=yearly_sales, x='order_year', y='Sales', marker='o', linewidth=2.5, color='b')
-plt.title('Yearly Sales Trend (2015–2018)', fontsize=14, fontweight='bold')
-plt.xlabel('Order Year')
-plt.ylabel('Total Sales ($)')
-plt.xticks([2015, 2016, 2017, 2018])
-plt.tight_layout()
-plt.savefig('visualizations/yearly_sales_trend.png')
-plt.show()
-
-# 4. Top 10 Sub-Categories by Total Sales
-top10_subcat = df.groupby('Sub-Category')['Sales'].sum().reset_index().sort_values(by='Sales', ascending=False).head(10)
-plt.figure(figsize=(10, 6))
-sns.barplot(data=top10_subcat, y='Sub-Category', x='Sales', palette='magma')
-plt.title('Top 10 Sub-Categories by Total Sales', fontsize=14, fontweight='bold')
-plt.xlabel('Total Sales ($)')
-plt.tight_layout()
-plt.savefig('visualizations/top10_subcategories.png')
-plt.show()
-
-# 5. Total Profit by Product Category
-category_profit = df.groupby('Category')['Profit'].sum().reset_index().sort_values(by='Profit', ascending=False)
-plt.figure(figsize=(8, 5))
-sns.barplot(data=category_profit, x='Category', y='Profit', palette='crest')
-plt.title('Total Profit by Product Category', fontsize=14, fontweight='bold')
-plt.ylabel('Total Profit ($)')
-plt.tight_layout()
-plt.savefig('visualizations/category_profit.png')
-plt.show()
-
-# 6. Total Sales by Region
-region_sales = df.groupby('Region')['Sales'].sum().reset_index().sort_values(by='Sales', ascending=False)
-plt.figure(figsize=(8, 5))
-sns.barplot(data=region_sales, x='Region', y='Sales', palette='Blues_r')
-plt.title('Total Sales by Region', fontsize=14, fontweight='bold')
-plt.ylabel('Total Sales ($)')
-plt.tight_layout()
-plt.savefig('visualizations/region_sales.png')
-plt.show()
-
-# 7. Total Profit by Region
-region_profit = df.groupby('Region')['Profit'].sum().reset_index().sort_values(by='Profit', ascending=False)
-plt.figure(figsize=(8, 5))
-sns.barplot(data=region_profit, x='Region', y='Profit', palette='Greens_r')
-plt.title('Total Profit by Region', fontsize=14, fontweight='bold')
-plt.ylabel('Total Profit ($)')
-plt.tight_layout()
-plt.savefig('visualizations/region_profit.png')
-plt.show()
+Strategic Business Insight Generation
 
 Conclusion
 This project demonstrates how Python can be utilized to transform raw retail transactional data into meaningful business intelligence. By integrating statistical techniques, exploratory visualizations, and category-level diagnostics, the analysis highlights critical levers for improving retail profitability—specifically controlling promotional discount boundaries, restructuring loss-making furniture categories, and leveraging high-margin technology products.
