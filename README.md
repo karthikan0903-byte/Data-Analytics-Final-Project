@@ -191,8 +191,6 @@ Descriptive statistical measures were calculated across numerical metrics to eva
 3. **Focus on High-Margin Technology:** Increase inventory and marketing allocation toward high-margin items like *Copiers*, *Accessories*, and *Phones*.
 4. **Central Region Pricing Audit:** Standardize commercial contract terms in the Central Region and tie sales commissions to **net profit** rather than gross sales volume.
 
-# Superstore Sales Data Analysis & Performance Report (2015-2018) Using Python
-
 ## Project Structure
 
 Superstore-Sales-Data-Analysis/
@@ -214,7 +212,7 @@ Superstore-Sales-Data-Analysis/
 ## How to Run the Project
 
 1. Clone the Repository:
-   git clone [https://github.com/your-username/Superstore-Sales-Data-Analysis.git](https://github.com/your-username/Superstore-Sales-Data-Analysis.git)
+   git clone [https://github.com/your-username/Superstore-Sales-Data-Analysis.git](https://github.com/karthikan0903-byte/Data-Analytics-Final-Project))
 
 2. Open the Notebook: 
    Launch Google Colab and open:
