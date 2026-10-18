@@ -212,7 +212,7 @@ Superstore-Sales-Data-Analysis/
 ## How to Run the Project
 
 1. Clone the Repository:
-   git clone [https://github.com/your-username/Superstore-Sales-Data-Analysis.git](https://github.com/karthikan0903-byte/Data-Analytics-Final-Project))
+  git clone https://github.com/karthikan0903-byte/Data-Analytics-Final-Project.git
 
 2. Open the Notebook: 
    Launch Google Colab and open:
