@@ -191,9 +191,9 @@ Descriptive statistical measures were calculated across numerical metrics to eva
 3. **Focus on High-Margin Technology:** Increase inventory and marketing allocation toward high-margin items like *Copiers*, *Accessories*, and *Phones*.
 4. **Central Region Pricing Audit:** Standardize commercial contract terms in the Central Region and tie sales commissions to **net profit** rather than gross sales volume.
 
----
+# Superstore Sales Data Analysis & Performance Report (2015-2018) Using Python
 
-Project Structure
+## Project Structure
 
 Superstore-Sales-Data-Analysis/
 │
@@ -211,50 +211,35 @@ Superstore-Sales-Data-Analysis/
     ├── regional_sales.png
     └── regional_profit.png
 
+## How to Run the Project
 
-How to Run the Project
+1. Clone the Repository:
+   git clone [https://github.com/your-username/Superstore-Sales-Data-Analysis.git](https://github.com/your-username/Superstore-Sales-Data-Analysis.git)
 
-Clone the Repository:
+2. Open the Notebook: 
+   Launch Google Colab and open:
+   Main_Project_Superstore_Sales_Analysis.ipynb
 
-git clone https://github.com/your-username/Superstore-Sales-Data-Analysis.git
+3. Install Required Libraries:
+   Ensure the necessary Python dependencies are installed:
+   pip install pandas numpy matplotlib seaborn
 
+4. Execute the Cells:
+   Run the notebook cells sequentially to reproduce data cleaning, feature engineering, statistical computations, visual plots, and business reports.
 
-Open the Notebook:
-Launch Google Colab or Jupyter Notebook and open:
+## Analysis Techniques Used
 
-Main_Project_Superstore_Sales_Analysis.ipynb
+- Data Inspection & Data Cleaning
+- Missing Value Imputation & Lookup
+- Feature Engineering (order_year, shipping_days, profit_margin)
+- Descriptive Statistical Analysis (Central Tendency, Variance, Std Dev, Skewness, Kurtosis)
+- Univariate Analysis
+- Bivariate Analysis
+- Multivariate Analysis
+- Temporal Growth & Trend Analysis
+- Correlation & Scatter Relationship Analysis
+- Strategic Business Insight Generation
 
+## Conclusion
 
-Install Required Libraries:
-Ensure the necessary Python dependencies are installed:
-
-pip install pandas numpy matplotlib seaborn
-
-
-Execute the Cells:
-Run the notebook cells sequentially to reproduce data cleaning, feature engineering, statistical computations, visual plots, and business reports.
-
-Analysis Techniques Used
-
-Data Inspection & Data Cleaning
-
-Missing Value Imputation & Lookup
-
-Feature Engineering (order_year, shipping_days, profit_margin)
-
-Descriptive Statistical Analysis (Central Tendency, Variance, Std Dev, Skewness, Kurtosis)
-
-Univariate Analysis
-
-Bivariate Analysis
-
-Multivariate Analysis
-
-Temporal Growth & Trend Analysis
-
-Correlation & Scatter Relationship Analysis
-
-Strategic Business Insight Generation
-
-Conclusion
 This project demonstrates how Python can be utilized to transform raw retail transactional data into meaningful business intelligence. By integrating statistical techniques, exploratory visualizations, and category-level diagnostics, the analysis highlights critical levers for improving retail profitability—specifically controlling promotional discount boundaries, restructuring loss-making furniture categories, and leveraging high-margin technology products.
